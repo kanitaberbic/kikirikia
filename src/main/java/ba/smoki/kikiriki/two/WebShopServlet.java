@@ -1,12 +1,10 @@
 package ba.smoki.kikiriki.two;
 
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,9 +13,7 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 @WebServlet(name = "webShopServlet", urlPatterns = {"/webshop"})
@@ -62,11 +58,11 @@ public class WebShopServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter();) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head><title>Counter SERVLET</title></head>");
+            out.println("<head><title>Produkti u ponudi</title></head>");
             out.println("<body>");
             out.println("<h1>Web shop artikli</h1>");
-            out.println("<table>");
-            out.println("<tr><th>Naziv</th><th>Cijena</th></tr>");
+            out.println("<table border='1'>");
+            out.println("<tr bgcolor='lightgray'><th>Naziv</th><th>Cijena</th><th>Dodaj</th></tr>");
             List<Product> products = (List<Product>) getServletContext().getAttribute(PRODUCTS);
 
             for(Product product: products){
@@ -74,7 +70,7 @@ public class WebShopServlet extends HttpServlet {
                 out.println("<td>"+product.getName()+"</td>");
                 out.println("<td>"+product.getPrice()+"</td>");
                 out.println("<td>");
-                out.println("<form method='post' action='/kikiriki-1.0-SNAPSHOT/cart'>");
+                out.println("<form method='get' action='/kikiriki-1.0-SNAPSHOT/cart'>");
                 out.println("<input type='number' name='quantity'/>");
                 out.println("<input type='hidden' name='productId' value='"+product.getId()+"'/>");
                 out.println("<input type='submit' value='Dodaj'/>");
