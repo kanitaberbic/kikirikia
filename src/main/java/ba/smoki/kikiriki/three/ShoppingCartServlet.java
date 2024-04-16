@@ -10,7 +10,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static ba.smoki.kikiriki.two.WebShopServlet.PRODUCTS;
 
@@ -42,21 +45,27 @@ public class ShoppingCartServlet extends HttpServlet {
                 shoppingCart = new ShoppingCart();
                 session.setAttribute(KORPA, shoppingCart);
             }
-            Long productId = Long.parseLong(request.getParameter("productId"));
-            Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+            String[] productIdArray = request.getParameterValues("productId");
+            List<Long> productIds = Stream.of(productIdArray)
+                    .map(param -> Long.parseLong(param))
+                    .collect(Collectors.toList());
+            String[] quantityArray = request.getParameterValues("quantity");
+            List<Integer> quantities = Stream.of(quantityArray)
+                    .map(quantity -> quantity.isEmpty() ? 0 : Integer.parseInt(quantity))
+                    .collect(Collectors.toList());
             List<Product> products = (List<Product>) getServletContext().getAttribute(PRODUCTS);
-            Product product = products
-                    .stream()
-                    .filter(p -> p.getId().equals(productId))
-                    .findFirst()
-                    .orElseThrow();
-            shoppingCart.addCartItem(product, quantity);
-//            for(Product product: products){
-//                if(product.getId().equals(productId)){
-//                    shoppingCart.addCartItem(product, quantity);
-//                    break;
-//                }
-//            }
+            for (int i = 0; i < productIds.size(); i++) {
+                Long productId = productIds.get(i);
+                Integer quantity = quantities.get(i);
+                Product product = products
+                        .stream()
+                        .filter(p -> p.getId().equals(productId))
+                        .findFirst()
+                        .orElseThrow();
+                if (quantity != 0) {
+                    shoppingCart.addCartItem(product, quantity);
+                }
+            }
             if (!shoppingCart.getShoppingCartItems().isEmpty()) {
                 out.println("<h1>Artikli u korpi</h1>");
                 out.println("<table>");
@@ -75,6 +84,12 @@ public class ShoppingCartServlet extends HttpServlet {
                     out.println("</tr>");
                 }
                 out.println("</table>");
+                BigDecimal total = shoppingCart
+                        .getShoppingCartItems()
+                        .stream()
+                        .map(ShoppingCartItem::getTotalPrice)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add);
+                out.println("<h2>Total: " + total);
             } else {
                 out.println("<h1>Nema proizvoda u korpi</h1>");
             }

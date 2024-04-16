@@ -1,0 +1,24 @@
+Zadaća:
+1.
+Nadograditi ovaj naš bazični web shop na način da imate opciju POTVRDE KUPOVINE.
+Kada potvrdite kupovinu klikom na link koji vas vodi ka potvrdi treba
+sljedeći servlet da prikaže formu u kojoj ćete unijeti :
+ - ime
+ - prezime
+ - broj kreditne kartice
+ - posjeduje dugme KUPI
+
+Nakon što korisnik potvrdi kupovinom klikom na KUPI program treba
+da obavijesti korisnika da je kupovina uspješna i da isprazni korpu
+(UKLONI JE IZ HttpSession objekta)
+
+2. Omogućiti prijavu na web shop unošenjem
+korisničkom imena i lozinke(korisnici.txt)
+Format korisnici.txt
+username;password
+- Prijavljeni korisnik se dodaje na sesiju i onemogućava se pristup
+stranici za kupovinu ukoliko korisnik nije prijavljen.
+
+Klik na "KUPI":
+   Opcija 1: korisnik je u sesiji logovan i tu nema problema
+   Opcija 2: korisnik nije u sesiji i nije logovan

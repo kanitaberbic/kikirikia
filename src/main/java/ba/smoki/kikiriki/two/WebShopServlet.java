@@ -64,22 +64,20 @@ public class WebShopServlet extends HttpServlet {
             out.println("<table border='1'>");
             out.println("<tr bgcolor='lightgray'><th>Naziv</th><th>Cijena</th><th>Dodaj</th></tr>");
             List<Product> products = (List<Product>) getServletContext().getAttribute(PRODUCTS);
-
+            out.println("<form method='get' action='/kikiriki-1.0-SNAPSHOT/cart'>");
             for(Product product: products){
                 out.println("<tr>");
                 out.println("<td>"+product.getName()+"</td>");
                 out.println("<td>"+product.getPrice()+"</td>");
                 out.println("<td>");
-                out.println("<form method='get' action='/kikiriki-1.0-SNAPSHOT/cart'>");
                 out.println("<input type='number' name='quantity'/>");
                 out.println("<input type='hidden' name='productId' value='"+product.getId()+"'/>");
-                out.println("<input type='submit' value='Dodaj'/>");
-                out.println("</form>");
                 out.println("</td>");
                 out.println("</tr>");
             }
-
             out.println("</table>");
+            out.println("<input type='submit' value='Dodaj'/>");
+            out.println("</form>");
             out.println("</body>");
             out.println("</html>");
         }
