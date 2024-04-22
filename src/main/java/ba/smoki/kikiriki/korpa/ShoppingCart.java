@@ -1,6 +1,6 @@
-package ba.smoki.kikiriki.three;
+package ba.smoki.kikiriki.korpa;
 
-import ba.smoki.kikiriki.two.Product;
+import ba.smoki.kikiriki.prodavnica.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;

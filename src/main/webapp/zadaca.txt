@@ -1,4 +1,4 @@
-Zadaća:
+ Zadaća:
 1.
 Nadograditi ovaj naš bazični web shop na način da imate opciju POTVRDE KUPOVINE.
 Kada potvrdite kupovinu klikom na link koji vas vodi ka potvrdi treba

@@ -1,4 +1,4 @@
-package ba.smoki.kikiriki.two;
+package ba.smoki.kikiriki.prodavnica;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

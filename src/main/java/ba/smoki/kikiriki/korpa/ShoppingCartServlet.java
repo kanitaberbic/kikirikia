@@ -1,6 +1,6 @@
-package ba.smoki.kikiriki.three;
+package ba.smoki.kikiriki.korpa;
 
-import ba.smoki.kikiriki.two.Product;
+import ba.smoki.kikiriki.prodavnica.Product;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static ba.smoki.kikiriki.two.WebShopServlet.PRODUCTS;
+import static ba.smoki.kikiriki.prodavnica.WebShopServlet.PRODUCTS;
 
-@WebServlet(urlPatterns = {"/cart"})
+@WebServlet(name = "shoppingCartServlet", urlPatterns = "/korpa")
 public class ShoppingCartServlet extends HttpServlet {
 
     public static final String KORPA = "KORPA";
@@ -37,8 +37,15 @@ public class ShoppingCartServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter();) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head><title>Shopping cart</title></head>");
+            out.println("<head><title>Kikiriki prodavnica</title></head>");
+            out.println("<link rel='stylesheet' type='text/css' href='prodavnica.css' media='screen'>");
+            out.println("</head>");
             out.println("<body>");
+            out.println("<main>");
+            out.println("<div class='row'>");
+            out.println("<div class='colm-form'>");
+            out.println("<div class='form-container'>");
+
             HttpSession session = request.getSession();
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(KORPA);
             if (shoppingCart == null) {
@@ -67,13 +74,16 @@ public class ShoppingCartServlet extends HttpServlet {
                 }
             }
             if (!shoppingCart.getShoppingCartItems().isEmpty()) {
+
+                out.println("<form action='/kikiriki/registracija.html' method='get'>");
+
                 out.println("<h1>Artikli u korpi</h1>");
                 out.println("<table>");
-                out.println("<tr bgcolor='lightgray'>" +
+                out.println("<tr bgcolor='maroon'>" +
                             "<th>Naziv</th>" +
-                            "<th>Jedinična cijena</th>" +
-                            "<th>Quantity</th>" +
-                            "<th>Ukupna cijena</th>" +
+                            "<th>Cijena</th>" +
+                            "<th>Količina</th>" +
+                            "<th>Ukupno</th>" +
                             "</tr>");
                 for (ShoppingCartItem item : shoppingCart.getShoppingCartItems()) {
                     out.println("<tr>");
@@ -89,10 +99,35 @@ public class ShoppingCartServlet extends HttpServlet {
                         .stream()
                         .map(ShoppingCartItem::getTotalPrice)
                         .reduce(BigDecimal.ZERO, BigDecimal::add);
-                out.println("<h2>Total: " + total);
+                out.println("<br/><h3>Sve ukupno: " + total + "</h3>");
+
+
+                BigDecimal ukljucujuciPDV = shoppingCart
+                        .getShoppingCartItems()
+                        .stream()
+                        .map(ShoppingCartItem::getPDV)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+                BigDecimal samoPDV = ukljucujuciPDV.subtract(total);
+                out.println("<h3>PDV: " + samoPDV + "</h3>");
+                out.println("<h3>Cijena sa PDV: " + ukljucujuciPDV + "</h3><br/>");
+
+                out.println("<button class='btn-login'>Kupi</button>");
+                out.println("</form>");
+
+                out.println("<a href='/kikiriki/prodavnica' class='btn-new' target='_self'>Nastavi kupovinu</a");
+
+
             } else {
-                out.println("<h1>Nema proizvoda u korpi</h1>");
+                out.println("<form action='/kikiriki/prodavnica' method='get'>");
+                out.println("<hr/><h1>Nema proizvoda u korpi</h1><hr/>");
+                out.println("<button class='btn-login'>Nastavi kupovinu</button>");
+                out.println("</form>");
             }
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</main>");
             out.println("</body>");
             out.println("</html>");
         }

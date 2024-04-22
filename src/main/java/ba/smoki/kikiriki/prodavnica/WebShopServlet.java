@@ -1,4 +1,4 @@
-package ba.smoki.kikiriki.two;
+package ba.smoki.kikiriki.prodavnica;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-@WebServlet(name = "webShopServlet", urlPatterns = {"/webshop"})
+@WebServlet(name = "webShopServlet", urlPatterns = "/prodavnica")
 public class WebShopServlet extends HttpServlet {
 
     static final Logger LOGGER = Logger.getLogger(WebServlet.class.getName());
@@ -58,26 +58,42 @@ public class WebShopServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter();) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head><title>Produkti u ponudi</title></head>");
+            out.println("<head><title>Kikiriki prodavnica</title></head>");
+            out.println("<link rel='stylesheet' type='text/css' href='prodavnica.css' media='screen'>");
+            out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Web shop artikli</h1>");
-            out.println("<table border='1'>");
-            out.println("<tr bgcolor='lightgray'><th>Naziv</th><th>Cijena</th><th>Dodaj</th></tr>");
+
+            out.println("<main>");
+            out.println("<div class='row'>");
+            out.println("<div class='colm-form'>");
+            out.println("<div class='form-container'>");
+
+
+            out.println("<h1>Ponuda</h1>");
+            out.println("<table>");
+            out.println("<tr bgcolor='maroon'><th>Naziv</th><th>Cijena</th><th>Količina</th></tr>");
             List<Product> products = (List<Product>) getServletContext().getAttribute(PRODUCTS);
-            out.println("<form method='get' action='/kikiriki-1.0-SNAPSHOT/cart'>");
+            out.println("<form method='get' action='/kikiriki/korpa'>");
             for(Product product: products){
                 out.println("<tr>");
                 out.println("<td>"+product.getName()+"</td>");
                 out.println("<td>"+product.getPrice()+"</td>");
                 out.println("<td>");
-                out.println("<input type='number' name='quantity'/>");
+                out.println("<input type='number' name='quantity' value='0' min='-100' max='100' step='1'/>");
                 out.println("<input type='hidden' name='productId' value='"+product.getId()+"'/>");
                 out.println("</td>");
                 out.println("</tr>");
             }
             out.println("</table>");
-            out.println("<input type='submit' value='Dodaj'/>");
+            out.println("<button class='btn-login'>Dodaj u korpu</button>");
             out.println("</form>");
+
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</main>");
+
+
             out.println("</body>");
             out.println("</html>");
         }

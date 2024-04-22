@@ -1,6 +1,6 @@
-package ba.smoki.kikiriki.three;
+package ba.smoki.kikiriki.korpa;
 
-import ba.smoki.kikiriki.two.Product;
+import ba.smoki.kikiriki.prodavnica.Product;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -39,4 +39,11 @@ public class ShoppingCartItem implements Serializable {
         totalPrice = totalPrice.setScale(2, RoundingMode.HALF_UP);
         return totalPrice;
     }
+    public BigDecimal getPDV() {
+        BigDecimal PDV = getTotalPrice().multiply(BigDecimal.valueOf(1.17));
+        PDV = PDV.setScale(2, RoundingMode.HALF_UP);
+        return PDV;
+    }
+
+
 }
