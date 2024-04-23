@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -56,8 +57,9 @@ public class WebShopServlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String korisnickoImeForma = request.getParameter(KORISNICKO_IME);
-        if(korisnickoImeForma != null) {
+        HttpSession session = request.getSession();
+        String korisnickoImeSesija = session.getAttribute(KORISNICKO_IME).toString();
+        if(korisnickoImeSesija != null) {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter();) {
                 out.println("<!DOCTYPE html>");

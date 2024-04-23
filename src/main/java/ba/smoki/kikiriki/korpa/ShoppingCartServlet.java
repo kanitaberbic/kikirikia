@@ -119,7 +119,7 @@ public class ShoppingCartServlet extends HttpServlet {
                 out.println("<button class='btn-login'>Kupi</button>");
                 out.println("</form>");
 
-                out.println("<a href='/kikiriki/prodavnica' class='btn-new' target='_self'>Nastavi kupovinu</a");
+                out.println("<a href='/kikiriki/odjava' class='btn-new' target='_self'>Odjavi me</a");
 
 
             } else {

@@ -15,6 +15,8 @@ import java.util.StringTokenizer;
 @WebServlet("/prijava")
 public class UserLogIn extends HttpServlet {
 
+    public static final String KORISNICKO_IME = "KORISNIK";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -54,10 +56,10 @@ public class UserLogIn extends HttpServlet {
 
         HttpSession session = request.getSession();
         if (uspjesnaPrijava) {
-            session.setAttribute("korisnickoIme", korisnickoImeForma);
+            session.setAttribute(KORISNICKO_IME, korisnickoImeForma);
             response.sendRedirect("/kikiriki/prodavnica");
         } else {
-            session.setAttribute("korisnickoIme", null);
+            session.setAttribute(KORISNICKO_IME, null);
             response.sendRedirect("pogresna_prijava.html");
         }
     }
