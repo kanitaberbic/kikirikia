@@ -5,10 +5,6 @@ O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 I
 src/main/webapp/hello.jsp,1\b\1b3fb2ce87c3816438f9d4d9c574c9a974a1eb02
-_
-/src/main/java/ba/smoki/kikiriki/two/Brojac.java,3\1\315ebe6b17f11697e7c9d250dc63332967a4b2ad
-g
-7src/main/java/ba/smoki/kikiriki/two/CounterServlet.java,e\3\e3b57a6852e4595d0a598be067142758d4d8125e
 J
 src/main/webapp/index.html,1\3\1337d72a3b1928dba82aa5210f5cdc0e88ce895b
 N
@@ -45,3 +41,15 @@ S
 Q.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,2\c\2cabb939da04d3de3a200bf2b575690e1a16316d
 w
 G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\863e0292fd7e9b3e74dafd6cc01f73ba76346482
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+h
+8src/main/java/ba/smoki/kikiriki/korisnici/UserLogIn.java,2\1\218826bfacd81a28b9f23b07ff8b601992f7877e
+U
+%src/main/webapp/pogresna_prijava.html,e\f\ef1ad6e58a063c5365e6ad57c7bbcd71217d267b
+i
+9src/main/java/ba/smoki/kikiriki/korisnici/UserLogOut.java,3\9\395d09f5efc24cfc2ce5344ad157db3186732da1
+w
+G.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,b\4\b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3
+Å
+Q.idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,1\0\10a03f31c4dce92cb371e761ce9429428bb6c176
