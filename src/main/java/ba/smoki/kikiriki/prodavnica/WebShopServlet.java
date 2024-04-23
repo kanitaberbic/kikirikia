@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static ba.smoki.kikiriki.korisnici.UserServlet.KORISNICKO_IME;
+
 @WebServlet(name = "webShopServlet", urlPatterns = "/prodavnica")
 public class WebShopServlet extends HttpServlet {
 
@@ -54,7 +56,7 @@ public class WebShopServlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String korisnickoImeForma = request.getParameter("korisnicko_ime");
+        String korisnickoImeForma = request.getParameter(KORISNICKO_IME);
         if(korisnickoImeForma != null) {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter();) {

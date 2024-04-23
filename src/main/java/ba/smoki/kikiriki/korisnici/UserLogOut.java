@@ -28,7 +28,7 @@ public class UserLogOut extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String korisnickoImeForma = request.getParameter("korisnicko_ime");
+        String korisnickoImeForma = request.getParameter("KORISNIK");
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter();) {

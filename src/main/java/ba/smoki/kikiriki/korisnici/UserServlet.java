@@ -59,7 +59,7 @@ public class UserServlet extends HttpServlet {
             out.println("<table>");
             out.println("<tr bgcolor='maroon'><th>Hvala na povjerenju.</th></tr>");
             String korisnik = (String) getServletContext().getAttribute(KORISNICKO_IME);
-            out.println("<form method='post' action='/kikiriki/prodavnica'>");
+            out.println("<form method='post' action='/kikiriki/pocetna.html'>");
 
             out.println("<tr>");
             out.println("<td><h2>"+ korisnik +"</h2></td>");
@@ -67,13 +67,7 @@ public class UserServlet extends HttpServlet {
             out.println("</table>");
             out.println("<input type='hidden' value="+korisnik+" name='korisnicko_ime'/>");
 
-            HttpSession session = request.getSession();
-            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(KORPA);
-            if (!shoppingCart.getShoppingCartItems().isEmpty()) {
-                session.removeAttribute(KORPA);
-            }
-
-            out.println("<button class='btn-login'>Nastavi kupovinu</button>");
+            out.println("<button class='btn-login'>Početna strana</button>");
             out.println("</form>");
 
             out.println("</div>");
@@ -83,6 +77,12 @@ public class UserServlet extends HttpServlet {
 
             out.println("</body>");
             out.println("</html>");
+            HttpSession session = request.getSession();
+            session.setAttribute(KORISNICKO_IME, korisnik);
+            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(KORPA);
+            if (!shoppingCart.getShoppingCartItems().isEmpty()) {
+                session.removeAttribute(KORPA);
+            }
             }
 
         }catch (FileNotFoundException e) {

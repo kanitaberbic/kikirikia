@@ -23,16 +23,20 @@ public class ShoppingCartServlet extends HttpServlet {
     public static final String KORPA = "KORPA";
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         processRequest(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         processRequest(req, resp);
     }
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter();) {
             out.println("<!DOCTYPE html>");
@@ -75,7 +79,7 @@ public class ShoppingCartServlet extends HttpServlet {
             }
             if (!shoppingCart.getShoppingCartItems().isEmpty()) {
 
-                out.println("<form action='/kikiriki/registracija.html' method='post'>");
+                out.println("<form action='/kikiriki/odjava' method='post'>");
 
                 out.println("<h1>Artikli u korpi</h1>");
                 out.println("<table>");
