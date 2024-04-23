@@ -17,11 +17,12 @@ public class UserServlet extends HttpServlet {
     public static final String KORISNICKO_IME = "KORISNIK";
     public static final String KORPA = "KORPA";
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         process(request, response);
     }
-
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         process(request, response);
