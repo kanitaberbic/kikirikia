@@ -75,7 +75,7 @@ public class ShoppingCartServlet extends HttpServlet {
             }
             if (!shoppingCart.getShoppingCartItems().isEmpty()) {
 
-                out.println("<form action='/kikiriki/registracija.html' method='get'>");
+                out.println("<form action='/kikiriki/registracija.html' method='post'>");
 
                 out.println("<h1>Artikli u korpi</h1>");
                 out.println("<table>");
@@ -119,7 +119,7 @@ public class ShoppingCartServlet extends HttpServlet {
 
 
             } else {
-                out.println("<form action='/kikiriki/prodavnica' method='get'>");
+                out.println("<form action='/kikiriki/prodavnica' method='post'>");
                 out.println("<hr/><h1>Nema proizvoda u korpi</h1><hr/>");
                 out.println("<button class='btn-login'>Nastavi kupovinu</button>");
                 out.println("</form>");

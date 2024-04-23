@@ -17,7 +17,15 @@ import java.util.StringTokenizer;
 @WebServlet("/odjava")
 public class UserLogOut extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
+        @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        return;
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String korisnickoImeForma = request.getParameter("korisnicko_ime");
@@ -34,7 +42,7 @@ public class UserLogOut extends HttpServlet {
             out.println("<div class='row'>");
             out.println("<div class='colm-form'>");
             out.println("<div class='form-container'>");
-            out.println("<form action='/kikiriki/' method='get'>");
+            out.println("<form action='/kikiriki/' method='post'>");
             out.println("<hr/><h1>Korisnik" + korisnickoImeForma + " je odjavljen</h1><hr/>");
             out.println("<button class='btn-login'>Početna strana</button>");
             out.println("</form>");

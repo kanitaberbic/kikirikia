@@ -15,7 +15,15 @@ import java.util.StringTokenizer;
 @WebServlet("/prijava")
 public class UserLogIn extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        return;
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String path = getServletContext().getRealPath("/WEB-INF/korisnici.txt");

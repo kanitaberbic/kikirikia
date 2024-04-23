@@ -59,7 +59,7 @@ public class UserServlet extends HttpServlet {
             out.println("<table>");
             out.println("<tr bgcolor='maroon'><th>Hvala na povjerenju.</th></tr>");
             String korisnik = (String) getServletContext().getAttribute(KORISNICKO_IME);
-            out.println("<form method='get' action='/kikiriki/prodavnica'>");
+            out.println("<form method='post' action='/kikiriki/prodavnica'>");
 
             out.println("<tr>");
             out.println("<td><h2>"+ korisnik +"</h2></td>");

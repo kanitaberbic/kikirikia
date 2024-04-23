@@ -75,7 +75,7 @@ public class WebShopServlet extends HttpServlet {
                 out.println("<table>");
                 out.println("<tr bgcolor='maroon'><th>Naziv</th><th>Cijena</th><th>Količina</th></tr>");
                 List<Product> products = (List<Product>) getServletContext().getAttribute(PRODUCTS);
-                out.println("<form method='get' action='/kikiriki/korpa'>");
+                out.println("<form method='post' action='/kikiriki/korpa'>");
                 for (Product product : products) {
                     out.println("<tr>");
                     out.println("<td>" + product.getName() + "</td>");
@@ -89,7 +89,7 @@ public class WebShopServlet extends HttpServlet {
                 out.println("</table>");
                 out.println("<button class='btn-login'>Dodaj u korpu</button>");
                 out.println("</form>");
-                out.println("<form method='get' action='/kikiriki/odjava'>");
+                out.println("<form method='post' action='/kikiriki/odjava'>");
                 out.println("<button class='btn-new'>Napusti prodavnicu</button>");
                 out.println("</form>");
 
