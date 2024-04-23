@@ -58,7 +58,11 @@ public class WebShopServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
-        String korisnickoImeSesija = session.getAttribute(KORISNICKO_IME).toString();
+        Object attribute = session.getAttribute(KORISNICKO_IME);
+        String korisnickoImeSesija;
+        if(attribute != null){
+        korisnickoImeSesija = attribute.toString();
+
         if(korisnickoImeSesija != null) {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter();) {
@@ -93,9 +97,6 @@ public class WebShopServlet extends HttpServlet {
                 out.println("</table>");
                 out.println("<button class='btn-login'>Dodaj u korpu</button>");
                 out.println("</form>");
-                out.println("<form method='post' action='/kikiriki/odjava'>");
-                out.println("<button class='btn-new'>Napusti prodavnicu</button>");
-                out.println("</form>");
 
                 out.println("</div>");
                 out.println("</div>");
@@ -106,7 +107,10 @@ public class WebShopServlet extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
             }
-        }else {
+        } else {
+            response.sendRedirect("/kikiriki/pogresna_prijava.html");
+        }
+        } else {
             response.sendRedirect("/kikiriki/pogresna_prijava.html");
         }
     }
