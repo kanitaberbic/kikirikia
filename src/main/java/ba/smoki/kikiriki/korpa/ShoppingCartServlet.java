@@ -119,8 +119,6 @@ public class ShoppingCartServlet extends HttpServlet {
                 out.println("<button class='btn-login'>Kupi</button>");
                 out.println("</form>");
 
-                out.println("<a href='/kikiriki/odjava' class='btn-new' target='_self'>Odjavi me</a");
-
 
             } else {
                 out.println("<form action='/kikiriki/prodavnica' method='post'>");

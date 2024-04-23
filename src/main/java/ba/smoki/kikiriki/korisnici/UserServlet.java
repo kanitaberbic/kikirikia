@@ -45,7 +45,7 @@ public class UserServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter();) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head><title>Hvala na kupovini</title></head>");
+            out.println("<head><title>Uspješno ste registrovani</title></head>");
             out.println("<link rel='stylesheet' type='text/css' href='prodavnica.css' media='screen'>");
             out.println("</head>");
             out.println("<body>");
@@ -55,11 +55,11 @@ public class UserServlet extends HttpServlet {
             out.println("<div class='colm-form'>");
             out.println("<div class='form-container'>");
 
-            out.println("<h1>Transakcija je bila uspješna. </h1>");
+            out.println("<h1>Uspješno ste se registrovali. </h1>");
             out.println("<table>");
             out.println("<tr bgcolor='maroon'><th>Hvala na povjerenju.</th></tr>");
             String korisnik = (String) getServletContext().getAttribute(KORISNICKO_IME);
-            out.println("<form method='post' action='/kikiriki/pocetna.html'>");
+            out.println("<form method='post' action='/kikiriki/prodavnica'>");
 
             out.println("<tr>");
             out.println("<td><h2>"+ korisnik +"</h2></td>");
@@ -67,7 +67,7 @@ public class UserServlet extends HttpServlet {
             out.println("</table>");
             out.println("<input type='hidden' value="+korisnik+" name='korisnicko_ime'/>");
 
-            out.println("<button class='btn-login'>Početna strana</button>");
+            out.println("<button class='btn-login'>Prijava u prodavnicu</button>");
             out.println("</form>");
 
             out.println("</div>");

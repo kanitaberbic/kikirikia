@@ -53,3 +53,9 @@ w
 G.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,b\4\b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3
 Å
 Q.idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,1\0\10a03f31c4dce92cb371e761ce9429428bb6c176
+Å
+Q.idea/sonarlint/securityhotspotstore/5/6/562d94e5ebfe0f75c426841ee2bf412638357207,5\a\5ab35ad89eb21079a3c6c3ca13f310c13b52d664
+Å
+Q.idea/sonarlint/securityhotspotstore/2/3/236fbd966cb8354f1ef59274a56af3b5371fed7b,3\0\30422813d8c2e56f9641f7f7e8a93ca352882aa3
+Z
+*src/main/webapp/uspjesna_registracija.html,7\4\74ca0797a8219f912ec1fec4047ce7c3ee42b499

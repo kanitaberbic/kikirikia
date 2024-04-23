@@ -43,7 +43,7 @@ public class UserLogOut extends HttpServlet {
             out.println("<div class='colm-form'>");
             out.println("<div class='form-container'>");
             out.println("<form action='/kikiriki/' method='post'>");
-            out.println("<hr/><h1>Korisnik " + korisnickoImeSesija + " je odjavljen</h1><br/>Korpa je ispražnjena<br/><hr/>");
+            out.println("<hr/><h1>Transakcija je uspješno obavljena.</h1<h3>Korisnik " + korisnickoImeSesija + " je odjavljen</h3><br/><h3>Korpa je ispražnjena</h3><br/><hr/>");
             out.println("<button class='btn-login'>Početna strana</button>");
             out.println("</form>");
             out.println("</div>");
