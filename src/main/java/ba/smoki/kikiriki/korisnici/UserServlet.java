@@ -35,7 +35,7 @@ public class UserServlet extends HttpServlet {
         String lozinka = request.getParameter("lozinka");
         String kreditnaKartica = request.getParameter("kreditna_kartica");
         String path = getServletContext().getRealPath("/WEB-INF/korisnici.txt");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path, true))) {
             writer.write(korisnickoIme + ";" + lozinka + ";" + kreditnaKartica);
             writer.newLine();
             getServletContext().setAttribute(KORISNICKO_IME, korisnickoIme);
